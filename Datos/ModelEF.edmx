@@ -1,0 +1,567 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModelEF.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Alumno">
+          <Key>
+            <PropertyRef Name="idAlumno" />
+          </Key>
+          <Property Name="idAlumno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreApellidos" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="CorreoElectronico" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModificacionId" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+          <Property Name="DNI" Type="varchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clase">
+          <Key>
+            <PropertyRef Name="idCurso" />
+          </Key>
+          <Property Name="idCurso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoDeClase" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AforoMaximo" Type="int" Nullable="false" />
+          <Property Name="Precio" Type="float" Nullable="false" />
+          <Property Name="TipoDeLicencia" Type="varchar" MaxLength="50" />
+          <Property Name="IntervadoDeHoras" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NombreProfesor" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModificacionesId" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+          <Property Name="Usuario_IdUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clases_x_Alumnos">
+          <Key>
+            <PropertyRef Name="idClases_x_Alumnos" />
+          </Key>
+          <Property Name="idClases_x_Alumnos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EstadoDePago" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModificacionId" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+          <Property Name="Clase_idCurso" Type="int" Nullable="false" />
+          <Property Name="Alumno_idAlumno" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nota">
+          <Key>
+            <PropertyRef Name="idNota" />
+          </Key>
+          <Property Name="idNota" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nota" Type="float" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModificacionId" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+          <Property Name="TipoEvaluacion_idTipoEvaluacion" Type="int" Nullable="false" />
+          <Property Name="Clases_x_Alumnos_idClases_x_Alumnos" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RolUsuario">
+          <Key>
+            <PropertyRef Name="idRolUsuario" />
+          </Key>
+          <Property Name="idRolUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreRol" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoEvaluacion">
+          <Key>
+            <PropertyRef Name="idTipoEvaluacion" />
+          </Key>
+          <Property Name="idTipoEvaluacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nombres" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="CorreoElectronico" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="DNI" Type="varchar" MaxLength="8" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModificacionId" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+          <Property Name="RolUsuario_idRolUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="Clase_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Clase" Type="Self.Clase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Clase">
+              <PropertyRef Name="Usuario_IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Clases_x_Alumnos_Alumno">
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="1" />
+          <End Role="Clases_x_Alumnos" Type="Self.Clases_x_Alumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumno">
+              <PropertyRef Name="idAlumno" />
+            </Principal>
+            <Dependent Role="Clases_x_Alumnos">
+              <PropertyRef Name="Alumno_idAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Clases_x_Alumnos_Clase">
+          <End Role="Clase" Type="Self.Clase" Multiplicity="1" />
+          <End Role="Clases_x_Alumnos" Type="Self.Clases_x_Alumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clase">
+              <PropertyRef Name="idCurso" />
+            </Principal>
+            <Dependent Role="Clases_x_Alumnos">
+              <PropertyRef Name="Clase_idCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Nota_Clases_x_Alumnos">
+          <End Role="Clases_x_Alumnos" Type="Self.Clases_x_Alumnos" Multiplicity="1" />
+          <End Role="Nota" Type="Self.Nota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clases_x_Alumnos">
+              <PropertyRef Name="idClases_x_Alumnos" />
+            </Principal>
+            <Dependent Role="Nota">
+              <PropertyRef Name="Clases_x_Alumnos_idClases_x_Alumnos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Nota_TipoEvaluacion">
+          <End Role="TipoEvaluacion" Type="Self.TipoEvaluacion" Multiplicity="1" />
+          <End Role="Nota" Type="Self.Nota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoEvaluacion">
+              <PropertyRef Name="idTipoEvaluacion" />
+            </Principal>
+            <Dependent Role="Nota">
+              <PropertyRef Name="TipoEvaluacion_idTipoEvaluacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Usuario_RolUsuario">
+          <End Role="RolUsuario" Type="Self.RolUsuario" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RolUsuario">
+              <PropertyRef Name="idRolUsuario" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="RolUsuario_idRolUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelEFStoreContainer">
+          <EntitySet Name="Alumno" EntityType="Self.Alumno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clase" EntityType="Self.Clase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clases_x_Alumnos" EntityType="Self.Clases_x_Alumnos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nota" EntityType="Self.Nota" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RolUsuario" EntityType="Self.RolUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoEvaluacion" EntityType="Self.TipoEvaluacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Clase_Usuario" Association="Self.Clase_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Clase" EntitySet="Clase" />
+          </AssociationSet>
+          <AssociationSet Name="Clases_x_Alumnos_Alumno" Association="Self.Clases_x_Alumnos_Alumno">
+            <End Role="Alumno" EntitySet="Alumno" />
+            <End Role="Clases_x_Alumnos" EntitySet="Clases_x_Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="Clases_x_Alumnos_Clase" Association="Self.Clases_x_Alumnos_Clase">
+            <End Role="Clase" EntitySet="Clase" />
+            <End Role="Clases_x_Alumnos" EntitySet="Clases_x_Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="Nota_Clases_x_Alumnos" Association="Self.Nota_Clases_x_Alumnos">
+            <End Role="Clases_x_Alumnos" EntitySet="Clases_x_Alumnos" />
+            <End Role="Nota" EntitySet="Nota" />
+          </AssociationSet>
+          <AssociationSet Name="Nota_TipoEvaluacion" Association="Self.Nota_TipoEvaluacion">
+            <End Role="TipoEvaluacion" EntitySet="TipoEvaluacion" />
+            <End Role="Nota" EntitySet="Nota" />
+          </AssociationSet>
+          <AssociationSet Name="Usuario_RolUsuario" Association="Self.Usuario_RolUsuario">
+            <End Role="RolUsuario" EntitySet="RolUsuario" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ModelEF" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Alumno">
+          <Key>
+            <PropertyRef Name="idAlumno" />
+          </Key>
+          <Property Name="idAlumno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreApellidos" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CorreoElectronico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModificacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Clases_x_Alumnos" Relationship="Self.Clases_x_Alumnos_Alumno" FromRole="Alumno" ToRole="Clases_x_Alumnos" />
+          <Property Name="DNI" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Clase">
+          <Key>
+            <PropertyRef Name="idCurso" />
+          </Key>
+          <Property Name="idCurso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoDeClase" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AforoMaximo" Type="Int32" Nullable="false" />
+          <Property Name="Precio" Type="Double" Nullable="false" />
+          <Property Name="TipoDeLicencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IntervadoDeHoras" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NombreProfesor" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModificacionesId" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Usuario_IdUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.Clase_Usuario" FromRole="Clase" ToRole="Usuario" />
+          <NavigationProperty Name="Clases_x_Alumnos" Relationship="Self.Clases_x_Alumnos_Clase" FromRole="Clase" ToRole="Clases_x_Alumnos" />
+        </EntityType>
+        <EntityType Name="Clases_x_Alumnos">
+          <Key>
+            <PropertyRef Name="idClases_x_Alumnos" />
+          </Key>
+          <Property Name="idClases_x_Alumnos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EstadoDePago" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModificacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Clase_idCurso" Type="Int32" Nullable="false" />
+          <Property Name="Alumno_idAlumno" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Alumno" Relationship="Self.Clases_x_Alumnos_Alumno" FromRole="Clases_x_Alumnos" ToRole="Alumno" />
+          <NavigationProperty Name="Clase" Relationship="Self.Clases_x_Alumnos_Clase" FromRole="Clases_x_Alumnos" ToRole="Clase" />
+          <NavigationProperty Name="Nota" Relationship="Self.Nota_Clases_x_Alumnos" FromRole="Clases_x_Alumnos" ToRole="Nota" />
+        </EntityType>
+        <EntityType Name="Nota">
+          <Key>
+            <PropertyRef Name="idNota" />
+          </Key>
+          <Property Name="idNota" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nota1" Type="Double" Nullable="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModificacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TipoEvaluacion_idTipoEvaluacion" Type="Int32" Nullable="false" />
+          <Property Name="Clases_x_Alumnos_idClases_x_Alumnos" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clases_x_Alumnos" Relationship="Self.Nota_Clases_x_Alumnos" FromRole="Nota" ToRole="Clases_x_Alumnos" />
+          <NavigationProperty Name="TipoEvaluacion" Relationship="Self.Nota_TipoEvaluacion" FromRole="Nota" ToRole="TipoEvaluacion" />
+        </EntityType>
+        <EntityType Name="RolUsuario">
+          <Key>
+            <PropertyRef Name="idRolUsuario" />
+          </Key>
+          <Property Name="idRolUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreRol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.Usuario_RolUsuario" FromRole="RolUsuario" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="TipoEvaluacion">
+          <Key>
+            <PropertyRef Name="idTipoEvaluacion" />
+          </Key>
+          <Property Name="idTipoEvaluacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Nota" Relationship="Self.Nota_TipoEvaluacion" FromRole="TipoEvaluacion" ToRole="Nota" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombres" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CorreoElectronico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DNI" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModificacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RolUsuario_idRolUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clase" Relationship="Self.Clase_Usuario" FromRole="Usuario" ToRole="Clase" />
+          <NavigationProperty Name="RolUsuario" Relationship="Self.Usuario_RolUsuario" FromRole="Usuario" ToRole="RolUsuario" />
+        </EntityType>
+        <Association Name="Clases_x_Alumnos_Alumno">
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="1" />
+          <End Role="Clases_x_Alumnos" Type="Self.Clases_x_Alumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumno">
+              <PropertyRef Name="idAlumno" />
+            </Principal>
+            <Dependent Role="Clases_x_Alumnos">
+              <PropertyRef Name="Alumno_idAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Clase_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Clase" Type="Self.Clase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Clase">
+              <PropertyRef Name="Usuario_IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Clases_x_Alumnos_Clase">
+          <End Role="Clase" Type="Self.Clase" Multiplicity="1" />
+          <End Role="Clases_x_Alumnos" Type="Self.Clases_x_Alumnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clase">
+              <PropertyRef Name="idCurso" />
+            </Principal>
+            <Dependent Role="Clases_x_Alumnos">
+              <PropertyRef Name="Clase_idCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Nota_Clases_x_Alumnos">
+          <End Role="Clases_x_Alumnos" Type="Self.Clases_x_Alumnos" Multiplicity="1" />
+          <End Role="Nota" Type="Self.Nota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clases_x_Alumnos">
+              <PropertyRef Name="idClases_x_Alumnos" />
+            </Principal>
+            <Dependent Role="Nota">
+              <PropertyRef Name="Clases_x_Alumnos_idClases_x_Alumnos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Nota_TipoEvaluacion">
+          <End Role="TipoEvaluacion" Type="Self.TipoEvaluacion" Multiplicity="1" />
+          <End Role="Nota" Type="Self.Nota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoEvaluacion">
+              <PropertyRef Name="idTipoEvaluacion" />
+            </Principal>
+            <Dependent Role="Nota">
+              <PropertyRef Name="TipoEvaluacion_idTipoEvaluacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Usuario_RolUsuario">
+          <End Role="RolUsuario" Type="Self.RolUsuario" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RolUsuario">
+              <PropertyRef Name="idRolUsuario" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="RolUsuario_idRolUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDEFEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Alumno" EntityType="Self.Alumno" />
+          <EntitySet Name="Clase" EntityType="Self.Clase" />
+          <EntitySet Name="Clases_x_Alumnos" EntityType="Self.Clases_x_Alumnos" />
+          <EntitySet Name="Nota" EntityType="Self.Nota" />
+          <EntitySet Name="RolUsuario" EntityType="Self.RolUsuario" />
+          <EntitySet Name="TipoEvaluacion" EntityType="Self.TipoEvaluacion" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="Clases_x_Alumnos_Alumno" Association="Self.Clases_x_Alumnos_Alumno">
+            <End Role="Alumno" EntitySet="Alumno" />
+            <End Role="Clases_x_Alumnos" EntitySet="Clases_x_Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="Clase_Usuario" Association="Self.Clase_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Clase" EntitySet="Clase" />
+          </AssociationSet>
+          <AssociationSet Name="Clases_x_Alumnos_Clase" Association="Self.Clases_x_Alumnos_Clase">
+            <End Role="Clase" EntitySet="Clase" />
+            <End Role="Clases_x_Alumnos" EntitySet="Clases_x_Alumnos" />
+          </AssociationSet>
+          <AssociationSet Name="Nota_Clases_x_Alumnos" Association="Self.Nota_Clases_x_Alumnos">
+            <End Role="Clases_x_Alumnos" EntitySet="Clases_x_Alumnos" />
+            <End Role="Nota" EntitySet="Nota" />
+          </AssociationSet>
+          <AssociationSet Name="Nota_TipoEvaluacion" Association="Self.Nota_TipoEvaluacion">
+            <End Role="TipoEvaluacion" EntitySet="TipoEvaluacion" />
+            <End Role="Nota" EntitySet="Nota" />
+          </AssociationSet>
+          <AssociationSet Name="Usuario_RolUsuario" Association="Self.Usuario_RolUsuario">
+            <End Role="RolUsuario" EntitySet="RolUsuario" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelEFStoreContainer" CdmEntityContainer="BDEFEntities">
+          <EntitySetMapping Name="Alumno">
+            <EntityTypeMapping TypeName="ModelEF.Alumno">
+              <MappingFragment StoreEntitySet="Alumno">
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+                <ScalarProperty Name="NombreApellidos" ColumnName="NombreApellidos" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+                <ScalarProperty Name="UsuarioCreacionId" ColumnName="UsuarioCreacionId" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacionId" ColumnName="UsuarioModificacionId" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clase">
+            <EntityTypeMapping TypeName="ModelEF.Clase">
+              <MappingFragment StoreEntitySet="Clase">
+                <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+                <ScalarProperty Name="TipoDeClase" ColumnName="TipoDeClase" />
+                <ScalarProperty Name="AforoMaximo" ColumnName="AforoMaximo" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="TipoDeLicencia" ColumnName="TipoDeLicencia" />
+                <ScalarProperty Name="IntervadoDeHoras" ColumnName="IntervadoDeHoras" />
+                <ScalarProperty Name="NombreProfesor" ColumnName="NombreProfesor" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+                <ScalarProperty Name="UsuarioCreacionId" ColumnName="UsuarioCreacionId" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacionesId" ColumnName="UsuarioModificacionesId" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="Usuario_IdUsuario" ColumnName="Usuario_IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clases_x_Alumnos">
+            <EntityTypeMapping TypeName="ModelEF.Clases_x_Alumnos">
+              <MappingFragment StoreEntitySet="Clases_x_Alumnos">
+                <ScalarProperty Name="idClases_x_Alumnos" ColumnName="idClases_x_Alumnos" />
+                <ScalarProperty Name="EstadoDePago" ColumnName="EstadoDePago" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+                <ScalarProperty Name="UsuarioCreacionId" ColumnName="UsuarioCreacionId" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacionId" ColumnName="UsuarioModificacionId" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="Clase_idCurso" ColumnName="Clase_idCurso" />
+                <ScalarProperty Name="Alumno_idAlumno" ColumnName="Alumno_idAlumno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nota">
+            <EntityTypeMapping TypeName="ModelEF.Nota">
+              <MappingFragment StoreEntitySet="Nota">
+                <ScalarProperty Name="idNota" ColumnName="idNota" />
+                <ScalarProperty Name="Nota1" ColumnName="Nota" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+                <ScalarProperty Name="UsuarioCreacionId" ColumnName="UsuarioCreacionId" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacionId" ColumnName="UsuarioModificacionId" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="TipoEvaluacion_idTipoEvaluacion" ColumnName="TipoEvaluacion_idTipoEvaluacion" />
+                <ScalarProperty Name="Clases_x_Alumnos_idClases_x_Alumnos" ColumnName="Clases_x_Alumnos_idClases_x_Alumnos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RolUsuario">
+            <EntityTypeMapping TypeName="ModelEF.RolUsuario">
+              <MappingFragment StoreEntitySet="RolUsuario">
+                <ScalarProperty Name="idRolUsuario" ColumnName="idRolUsuario" />
+                <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoEvaluacion">
+            <EntityTypeMapping TypeName="ModelEF.TipoEvaluacion">
+              <MappingFragment StoreEntitySet="TipoEvaluacion">
+                <ScalarProperty Name="idTipoEvaluacion" ColumnName="idTipoEvaluacion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="ModelEF.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+                <ScalarProperty Name="UsuarioCreacionId" ColumnName="UsuarioCreacionId" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacionId" ColumnName="UsuarioModificacionId" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="RolUsuario_idRolUsuario" ColumnName="RolUsuario_idRolUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
