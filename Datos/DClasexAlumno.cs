@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    public partial class Clases_x_Alumnos
+    public partial class ClasexAlumno
     {
         public Usuario UsuarioCreacion { get; set; }
         public Usuario UsuarioModificacion { get; set; }
