@@ -13,13 +13,14 @@ namespace Datos
     }
     public class DNota
     {
-        public String Registrar()
+        public String Registrar(Nota nota)
         {
             try
             {
                 using (var context = new BDEFEntities())
                 {
-
+                    context.Nota.Add(nota);
+                    context.SaveChanges();
                 }
                 return "Registrado correctamente";
             }
@@ -29,10 +30,56 @@ namespace Datos
             }
         }
 
-        public List<Nota> ListarTod(List<Nota> notas)
+        public String Modificar(Nota nota)
         {
             try
             {
+                using (var context = new BDEFEntities())
+                {
+                    Nota notaTemp = context.Nota.Find(nota.idNota);
+                    notaTemp.Nota1 = nota.Nota1;
+                    notaTemp.UsuarioCreacionId = nota.UsuarioCreacionId;
+                    notaTemp.FechaCreacion = nota.FechaCreacion;
+                    notaTemp.UsuarioModificacionId = nota.UsuarioModificacionId;
+                    notaTemp.FechaModificacion = nota.FechaModificacion;
+                    notaTemp.Clases_x_Alumnos_idClases_x_Alumnos = nota.Clases_x_Alumnos_idClases_x_Alumnos;
+                    notaTemp.TipoEvaluacion_idTipoEvaluacion = nota.TipoEvaluacion_idTipoEvaluacion;
+                    context.SaveChanges();
+                }
+                return "Editado correctamente";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+        public String EliminadoLogico(Nota nota)
+        {
+            try
+            {
+                using (var context = new BDEFEntities())
+                {
+                    Nota notaTemp = context.Nota.Find(nota.idNota);
+                    notaTemp.Eliminado = true;
+                    notaTemp.UsuarioModificacionId = nota.UsuarioModificacionId;
+                    notaTemp.FechaModificacion = nota.FechaModificacion;
+                    context.SaveChanges();
+                }
+                return "Eliminado correctamente";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+        public List<Nota> ListarTodo()
+        {
+            List<Nota> notas = new List<Nota>();
+            try
+            {
+                
                 using (var context = new BDEFEntities())
                 {
                     notas = context.Nota.ToList();
@@ -44,5 +91,27 @@ namespace Datos
                 return notas;
             }
         }
+
+        public List<Nota> ListarPorDNI(string dniAlumno)
+        {
+            List<Nota> notas = new List<Nota>();
+            try
+            {
+                
+                using (var context = new BDEFEntities())
+                {
+                    context.Configuration.LazyLoadingEnabled = false;
+                    context.Nota.Where(ca => ca.Clases_x_Alumnos.Alumno.DNI == dniAlumno && ca.Eliminado == false).ToList();
+                }
+                return notas;
+            }
+            catch (Exception ex)
+            {
+                return notas;
+            }
+        }
+
+
+
     }
 }

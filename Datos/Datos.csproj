@@ -64,6 +64,7 @@
     <Compile Include="DClasexAlumno.cs" />
     <Compile Include="DNota.cs" />
     <Compile Include="DRolUsuario.cs" />
+    <Compile Include="DTipoEvaluacion.cs" />
     <Compile Include="DUsuario.cs" />
     <Compile Include="ModelEF.Context.cs">
       <AutoGen>True</AutoGen>
