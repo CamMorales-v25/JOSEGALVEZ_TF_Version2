@@ -82,6 +82,7 @@ namespace Datos
                 
                 using (var context = new BDEFEntities())
                 {
+                    context.Configuration.LazyLoadingEnabled = false;
                     notas = context.Nota.ToList();
                 }
                 return notas;
