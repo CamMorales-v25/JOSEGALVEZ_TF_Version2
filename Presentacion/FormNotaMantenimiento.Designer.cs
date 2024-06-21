@@ -44,12 +44,10 @@ namespace Presentacion
             this.label2 = new System.Windows.Forms.Label();
             this.dgAlumnosConClasesPagadas = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtDNIAlumno = new System.Windows.Forms.TextBox();
-            this.cmbEstadoDePago = new System.Windows.Forms.ComboBox();
+            this.tbNotaPractica = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.dgNotasDeAlumnos = new System.Windows.Forms.GroupBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnBuscar2 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dgNotas = new System.Windows.Forms.DataGridView();
@@ -62,6 +60,9 @@ namespace Presentacion
             this.ssModificadoPor = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ssModificadoEl = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.tbNotaTeorica = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgAlumnosConClasesPagadas)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -74,38 +75,42 @@ namespace Presentacion
             // 
             this.btnEliminar.BackColor = System.Drawing.Color.OrangeRed;
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnEliminar.Location = new System.Drawing.Point(300, 171);
+            this.btnEliminar.Location = new System.Drawing.Point(297, 153);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(141, 39);
             this.btnEliminar.TabIndex = 63;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnEditar
             // 
             this.btnEditar.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnEditar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnEditar.Location = new System.Drawing.Point(156, 171);
+            this.btnEditar.Location = new System.Drawing.Point(153, 155);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(138, 39);
             this.btnEditar.TabIndex = 62;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnRegistrar
             // 
             this.btnRegistrar.BackColor = System.Drawing.Color.DarkBlue;
             this.btnRegistrar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnRegistrar.Location = new System.Drawing.Point(12, 173);
+            this.btnRegistrar.Location = new System.Drawing.Point(12, 155);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(138, 37);
             this.btnRegistrar.TabIndex = 61;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox2.Controls.Add(this.btnBuscar);
             this.groupBox2.Controls.Add(this.txtBuscando);
             this.groupBox2.Controls.Add(this.cmbFiltrarPor);
             this.groupBox2.Controls.Add(this.label2);
@@ -121,7 +126,7 @@ namespace Presentacion
             // 
             // txtBuscando
             // 
-            this.txtBuscando.Location = new System.Drawing.Point(410, 21);
+            this.txtBuscando.Location = new System.Drawing.Point(269, 21);
             this.txtBuscando.Name = "txtBuscando";
             this.txtBuscando.Size = new System.Drawing.Size(194, 22);
             this.txtBuscando.TabIndex = 10;
@@ -130,7 +135,7 @@ namespace Presentacion
             // 
             this.cmbFiltrarPor.BackColor = System.Drawing.SystemColors.MenuBar;
             this.cmbFiltrarPor.FormattingEnabled = true;
-            this.cmbFiltrarPor.Location = new System.Drawing.Point(245, 21);
+            this.cmbFiltrarPor.Location = new System.Drawing.Point(104, 21);
             this.cmbFiltrarPor.Name = "cmbFiltrarPor";
             this.cmbFiltrarPor.Size = new System.Drawing.Size(143, 24);
             this.cmbFiltrarPor.TabIndex = 9;
@@ -139,7 +144,7 @@ namespace Presentacion
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label2.Location = new System.Drawing.Point(143, 24);
+            this.label2.Location = new System.Drawing.Point(2, 24);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 17);
             this.label2.TabIndex = 8;
@@ -182,56 +187,39 @@ namespace Presentacion
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Controls.Add(this.txtDNIAlumno);
-            this.groupBox1.Controls.Add(this.cmbEstadoDePago);
+            this.groupBox1.Controls.Add(this.tbNotaTeorica);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.tbNotaPractica);
             this.groupBox1.Controls.Add(this.txtTelefono);
-            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.DarkBlue;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(429, 153);
+            this.groupBox1.Size = new System.Drawing.Size(429, 106);
             this.groupBox1.TabIndex = 59;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos";
             // 
-            // txtDNIAlumno
+            // tbNotaPractica
             // 
-            this.txtDNIAlumno.Location = new System.Drawing.Point(128, 82);
-            this.txtDNIAlumno.Name = "txtDNIAlumno";
-            this.txtDNIAlumno.Size = new System.Drawing.Size(146, 22);
-            this.txtDNIAlumno.TabIndex = 26;
-            // 
-            // cmbEstadoDePago
-            // 
-            this.cmbEstadoDePago.FormattingEnabled = true;
-            this.cmbEstadoDePago.Location = new System.Drawing.Point(128, 34);
-            this.cmbEstadoDePago.Name = "cmbEstadoDePago";
-            this.cmbEstadoDePago.Size = new System.Drawing.Size(146, 24);
-            this.cmbEstadoDePago.TabIndex = 20;
+            this.tbNotaPractica.Location = new System.Drawing.Point(116, 34);
+            this.tbNotaPractica.Name = "tbNotaPractica";
+            this.tbNotaPractica.Size = new System.Drawing.Size(146, 22);
+            this.tbNotaPractica.TabIndex = 26;
             // 
             // txtTelefono
             // 
             this.txtTelefono.AutoSize = true;
-            this.txtTelefono.Location = new System.Drawing.Point(6, 82);
+            this.txtTelefono.Location = new System.Drawing.Point(17, 34);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(86, 17);
+            this.txtTelefono.Size = new System.Drawing.Size(93, 17);
             this.txtTelefono.TabIndex = 12;
-            this.txtTelefono.Text = "DNI Alumno:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 34);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(112, 17);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Estado de pago:";
+            this.txtTelefono.Text = "Nota Práctica";
             // 
             // dgNotasDeAlumnos
             // 
             this.dgNotasDeAlumnos.BackColor = System.Drawing.SystemColors.Control;
-            this.dgNotasDeAlumnos.Controls.Add(this.btnBuscar);
+            this.dgNotasDeAlumnos.Controls.Add(this.btnBuscar2);
             this.dgNotasDeAlumnos.Controls.Add(this.textBox2);
             this.dgNotasDeAlumnos.Controls.Add(this.label7);
             this.dgNotasDeAlumnos.Controls.Add(this.dgNotas);
@@ -244,16 +232,17 @@ namespace Presentacion
             this.dgNotasDeAlumnos.TabStop = false;
             this.dgNotasDeAlumnos.Text = "Lista de Notas registradas";
             // 
-            // btnBuscar
+            // btnBuscar2
             // 
-            this.btnBuscar.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnBuscar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnBuscar.Location = new System.Drawing.Point(936, 13);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(112, 39);
-            this.btnBuscar.TabIndex = 70;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnBuscar2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnBuscar2.Location = new System.Drawing.Point(936, 13);
+            this.btnBuscar2.Name = "btnBuscar2";
+            this.btnBuscar2.Size = new System.Drawing.Size(112, 39);
+            this.btnBuscar2.TabIndex = 70;
+            this.btnBuscar2.Text = "Buscar";
+            this.btnBuscar2.UseVisualStyleBackColor = false;
+            this.btnBuscar2.Click += new System.EventHandler(this.btnBuscar2_Click);
             // 
             // textBox2
             // 
@@ -383,6 +372,34 @@ namespace Presentacion
             this.ssModificadoEl.Size = new System.Drawing.Size(98, 20);
             this.ssModificadoEl.Text = "ModificadoEl";
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnBuscar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnBuscar.Location = new System.Drawing.Point(481, 12);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(112, 39);
+            this.btnBuscar.TabIndex = 71;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // tbNotaTeorica
+            // 
+            this.tbNotaTeorica.Location = new System.Drawing.Point(116, 66);
+            this.tbNotaTeorica.Name = "tbNotaTeorica";
+            this.tbNotaTeorica.Size = new System.Drawing.Size(146, 22);
+            this.tbNotaTeorica.TabIndex = 28;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 66);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 17);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Nota Teórica";
+            // 
             // FormNotaMantenimiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -423,15 +440,13 @@ namespace Presentacion
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgAlumnosConClasesPagadas;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtDNIAlumno;
-        private System.Windows.Forms.ComboBox cmbEstadoDePago;
+        private System.Windows.Forms.TextBox tbNotaPractica;
         private System.Windows.Forms.Label txtTelefono;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox dgNotasDeAlumnos;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dgNotas;
-        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Button btnBuscar2;
         private System.Windows.Forms.StatusStrip ssFooter;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel ssCreadoPor;
@@ -441,5 +456,8 @@ namespace Presentacion
         private System.Windows.Forms.ToolStripStatusLabel ssModificadoPor;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
         private System.Windows.Forms.ToolStripStatusLabel ssModificadoEl;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.TextBox tbNotaTeorica;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -6,13 +6,27 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    public partial class Clases_x_Alumnos
+    public partial class Nota
     {
         public Usuario UsuarioCreacion { get; set; }
         public Usuario UsuarioModificacion { get; set; }
     }
     public class DNota
     {
+        public Nota NotaPorId(int notaId)
+        {
+            Nota notaTemp = null;
+            using (var context = new BDEFEntities())
+            {
+                notaTemp = context.Nota.FirstOrDefault(c => c.idNota == notaId);
+                if (notaTemp != null)
+                {
+                    notaTemp.UsuarioCreacion = context.Usuario.FirstOrDefault(u => u.IdUsuario == notaTemp.UsuarioCreacionId);
+                    //notaTemp.UsuarioModificacion = context.Usuario.FirstOrDefault(u => u.IdUsuario == notaTemp.UsuarioModificacionesId);
+                }
+            }
+            return notaTemp;
+        }
         public String Registrar(Nota nota)
         {
             try

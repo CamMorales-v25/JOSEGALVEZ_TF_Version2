@@ -22,8 +22,8 @@ namespace Datos
                 clases_x_AlumnosTemp = context.Clases_x_Alumnos.FirstOrDefault(c => c.idClases_x_Alumnos == clases_x_AlumnosId);
                 if (clases_x_AlumnosTemp != null)
                 {
-                    clases_x_AlumnosTemp.UsuarioCreacion = context.Usuario.FirstOrDefault(u => u.IdUsuario == clases_x_AlumnosTemp.UsuarioCreacionId);
-                    clases_x_AlumnosTemp.UsuarioModificacion = context.Usuario.FirstOrDefault(u => u.IdUsuario == clases_x_AlumnosTemp.UsuarioModificacionId);
+                    clases_x_AlumnosTemp.UsuarioCreacionId = context.Usuario.FirstOrDefault(u => u.IdUsuario == clases_x_AlumnosTemp.UsuarioCreacionId);
+                    clases_x_AlumnosTemp.UsuarioModificacionId = context.Usuario.FirstOrDefault(u => u.IdUsuario == clases_x_AlumnosTemp.UsuarioModificacionId);
                 }
             }
             return clases_x_AlumnosTemp;
